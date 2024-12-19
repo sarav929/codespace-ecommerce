@@ -10,6 +10,8 @@ if (!isset( $_SESSION[ 'user_id' ])) {
     load(); 
 }
 
+echo '<h1 class="text-center m-5"> Welcome ' . $_SESSION['first_name'] . ' ' .  $_SESSION['last_name'] . ' !</h1>';
+
 include '../includes/footer.php';
 ?>
 
