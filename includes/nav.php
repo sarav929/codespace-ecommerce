@@ -16,10 +16,10 @@
                 <a class="nav-link" href="#">Products</a><span class="sr-only">(current)</span>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Register</a>
+                <a class="nav-link" href="../public/register.php">Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="../public/login.php">Login</a>
             </li>
         </ul>
     </div>
