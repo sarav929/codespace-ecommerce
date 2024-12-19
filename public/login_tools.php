@@ -20,37 +20,49 @@
 
         # Initialize errors array
         $errors = array(); 
-
+    
         # Check email field
         if (empty($email)) { 
             $errors['email'] = 'Enter your email address.'; 
         } else  { 
             $e = mysqli_real_escape_string($link, trim($email)); 
         }
-
+    
         # Check password field
         if (empty($pwd)) { 
             $errors['pwd'] = 'Enter your password.'; 
         } else { 
-            $p = mysqli_real_escape_string($link, trim($pwd)); 
+            $p = trim($pwd); // No need to escape for password_verify
         }
 
-        # On success retrieve user_id, first_name, and last name from 'users' database
+    
+        // If there are no validation errors
         if (empty($errors)) {
-            $q = "SELECT user_id, first_name, last_name FROM users WHERE email='$e' AND pass='$p'";  
-            $r = mysqli_query ($link, $q);
+            // Retrieve user details based on the email
+            $q = "SELECT user_id, first_name, last_name, pass FROM users WHERE email='$e'";
+            $r = mysqli_query($link, $q);
 
-            if (@mysqli_num_rows( $r ) == 1) {
-                $row = mysqli_fetch_array ( $r, MYSQLI_ASSOC );
-                return array( true, $row ); 
-            } else { 
-                # Or on failure set error message
-                $errors['invalid'] = 'Email address and password not found.';            
+            if ($r && mysqli_num_rows($r) == 1) {
+                $row = mysqli_fetch_array($r, MYSQLI_ASSOC);
+
+                // Verify the password against the hash stored in the database
+
+                if (password_verify($p, $row['pass'])) {
+                    // If password is correct, return user details
+                    return array(true, $row);
+                } else {
+                    // If password doesn't match
+                    $errors['invalid'] = 'Invalid email or password.';
+                }
+            } else {
+                // If email does not exist
+                $errors['invalid'] = 'Invalid email or password.';
             }
         }
 
-        # On failure retrieve error message/s
-        return array( false, $errors ) ; 
+        // Return error messages if validation failed
+        return array(false, $errors);
     }
+    
 
 ?>
