@@ -13,7 +13,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Products</a><span class="sr-only">(current)</span>
+                <a class="nav-link" href="../public/index.php">Home</a><span class="sr-only">(current)</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../public/products.php">Products</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../public/register.php">Register</a>
