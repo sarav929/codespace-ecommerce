@@ -24,6 +24,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="../public/login.php">Login</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../public/logout.php">Logout</a>
+            </li>
         </ul>
     </div>
 </nav>
