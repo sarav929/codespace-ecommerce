@@ -17,7 +17,7 @@
             $_SESSION[ 'user_id' ] = $data[ 'user_id' ];
             $_SESSION[ 'first_name' ] = $data[ 'first_name' ];
             $_SESSION[ 'last_name' ] = $data[ 'last_name' ];
-            load( '../public/products.php' );
+            load( '../public/index.php' );
 
         # else store errors in array
         } else { 

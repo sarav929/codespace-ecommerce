@@ -1,0 +1,52 @@
+.nav-icon {
+    width: 2em;
+    filter: invert(100%);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+
+.dropdown-icon {
+    width: 1rem;
+    margin-right: .5rem;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+}
+
+li {
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.user-section {
+    gap: 1rem;
+    color: rgb(243, 243, 243);
+}
+
+.logged-username {
+    text-transform: uppercase;
+    font-size: smaller;
+    letter-spacing: .1rem;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.navbar .dropdown-toggle::after {
+    display: none !important;
+}

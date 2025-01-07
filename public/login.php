@@ -1,24 +1,10 @@
-<?php 
-    include '../includes/nav.php';
-
-    # Display error messages at the top if credentials are invalid
-    if (isset($errors['invalid'])) {
-        echo '<div class="alert alert-danger text-center">
-        <p>Oops! There was a problem:<br>' . $errors['invalid'] . '</p>
-        <p>Please try again or <a href="../public/register.php">Register</a></p>
-        </div>';
-
-    }
-
-   
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Log in</title>
+        <link rel="stylesheet" href="../assets/style/style.css">
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" 
@@ -28,6 +14,20 @@
 
     </head>
     <body>
+
+        <?php 
+            include '../includes/nav.php';
+
+            # Display error messages at the top if credentials are invalid
+            if (isset($errors['invalid'])) {
+                echo '<div class="alert alert-danger text-center">
+                <p>Oops! There was a problem:<br>' . $errors['invalid'] . '</p>
+                <p>Please try again or <a href="../public/register.php">Register</a></p>
+                </div>';
+
+            }
+
+        ?>
 
         <div class="container-md p-5">
         <form class="container-md" action="../public/login_action.php" method="post" novalidate>
