@@ -30,7 +30,7 @@
         ?>
 
         <div class="container-md p-5">
-        <form class="container-md" action="../public/login_action.php" method="post" novalidate>
+        <form class="container-md" action="../includes/login_action.php" method="post" novalidate>
 
         <div class="row m-3">
             <label for="inputemail">Email</label>

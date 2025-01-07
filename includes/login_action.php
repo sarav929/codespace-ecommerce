@@ -5,7 +5,7 @@
         require('../config/connect.php');
 
         # 2. require functions for validation
-        require ('../public/login_tools.php');
+        require ('./login_tools.php');
 
         $errors = array();
 

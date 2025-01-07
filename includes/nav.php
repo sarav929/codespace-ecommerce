@@ -5,7 +5,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark pr-5 pl-5">
     <div class="container-fluid d-flex justify-content-between align-items-center">
         <!-- logo -->
-        <a class="navbar-brand mr-5" href="../public/index.php">Nocturne Scents</a>
+        <a class="navbar-brand mr-5" href="../public/index.php">MKTIME</a>
 
         <!-- collapse nav -->
         <button class="navbar-toggler" type="button" 
@@ -22,9 +22,6 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link mr-5" href="../public/products.php">Shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mr-5" href="../public/index.php">Explore notes</a><span class="sr-only">(current)</span>
                 </li>
             </ul>
         </div>
@@ -45,8 +42,8 @@
                     </a>
                         
                     <div class="dropdown-menu" aria-labelledby="userDropdown">
-                        <a class="dropdown-item d-flex align-items-center" href="../public/settings.php"><img src="../assets/icons/settings.png" class="dropdown-icon"> Account Settings</a>
-                        <a class="dropdown-item d-flex align-items-center" href="../public/logout.php"><img src="../assets/icons/logout.png" class="dropdown-icon"> Log Out</a>
+                        <a class="dropdown-item d-flex align-items-center" href="#"><img src="../assets/icons/settings.png" class="dropdown-icon"> Account Settings</a>
+                        <a class="dropdown-item d-flex align-items-center" href="../includes/logout.php"><img src="../assets/icons/logout.png" class="dropdown-icon"> Log Out</a>
                     </div>
                 </div>
 
