@@ -1,5 +1,9 @@
 <?php
-    session_start();
+
+    if (!isset($_SESSION[ 'user_id' ])) {
+        session_start();
+    }
+        
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark pr-5 pl-5">
@@ -42,8 +46,13 @@
                     </a>
                         
                     <div class="dropdown-menu" aria-labelledby="userDropdown">
-                        <a class="dropdown-item d-flex align-items-center" href="#"><img src="../assets/icons/settings.png" class="dropdown-icon"> Account Settings</a>
                         <a class="dropdown-item d-flex align-items-center" href="../includes/logout.php"><img src="../assets/icons/logout.png" class="dropdown-icon"> Log Out</a>
+
+                        <!-- admin page for admin account -->
+                        <?php if (isset($_SESSION[ 'user_id' ]) && $_SESSION[ 'user_id' ] == 8): ?>
+                            <a class="dropdown-item d-flex align-items-center" href="../public/admin_page.php"><img src="../assets/icons/settings.png" class="dropdown-icon">Manage Shop</a>
+                        <?php endif; ?>
+
                     </div>
                 </div>
 
