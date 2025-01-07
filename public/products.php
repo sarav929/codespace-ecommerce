@@ -1,27 +1,10 @@
-<?php
-include '../includes/nav.php'; 
-
-# Access session.
-session_start();
-
-# Redirect if not logged in.
-if (!isset( $_SESSION[ 'user_id' ])) { 
-    require ( 'login_tools.php' ); 
-    load(); 
-}
-
-echo '<h1 class="text-center m-5"> Welcome ' . $_SESSION['first_name'] . ' ' .  $_SESSION['last_name'] . ' !</h1>';
-
-include '../includes/footer.php';
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MKTIME</title>
+    <link rel="stylesheet" href="../assets/style/style.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" 
@@ -31,6 +14,14 @@ include '../includes/footer.php';
 
 </head>
 <body>
+
+    <?php
+        include '../includes/nav.php'; 
+
+        echo '<h1 class="text-center m-5"> Product page </h1>';
+
+        include '../includes/footer.php';
+    ?>
     
 </body>
 </html>
