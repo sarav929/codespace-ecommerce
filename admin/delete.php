@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
 
     $q = "DELETE FROM products WHERE item_id = '$id'";
     if ($link->query($q) === true) {
-        header("Location: ../public/index.php");
+        header("Location: ../public/admin_page.php");
         exit();
     } else {
         echo "Error deleting the item: " . $link->error;
