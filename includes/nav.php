@@ -78,7 +78,7 @@
             
             <!-- shopping cart  -->
 
-            <a class="nav-link dropdown-toggle" href="../public/shopping-cart">
+            <a class="nav-link dropdown-toggle" href="../public/cart.php">
                 <img class="nav-icon cart-icon" src="../assets/icons/bag.png" alt="Shopping Cart">
             </a>
         </div>

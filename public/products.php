@@ -67,6 +67,9 @@
                             <li class="list-group-item">
                                 <a class="btn btn-dark" href="#' . $row['item_id'] . '">View More</a>
                             </li>
+                            <li class="list-group-item">
+                                <a class="btn btn-dark" href="#' . $row['item_id'] . '">Add to bag</a>
+                            </li>
                         </ul>
                     </div>
                 </div>';
