@@ -1,12 +1,12 @@
 <?php 
 
-include ('../includes/session-cart.php');
+include ('../public/session_cart.php');
 
 # Check for Order Conditions
 if (isset( $_GET['total'] ) && ( $_GET['total'] > 0 ) && (!empty($_SESSION['cart']))) {
 
     # connect to database
-    require ('connect_db.php');
+    require ('../config/connect.php');
 
     # Store Order in Database 
     $q = "INSERT INTO orders ( user_id, total, order_date ) VALUES (". $_SESSION['user_id'].",".$_GET['total'].", NOW() )";

@@ -125,7 +125,7 @@
 
             <!-- submit button -->
             <div class="text-center m-3">
-                <input type="submit" class="btn btn-dark m-1" value="Update">
+                <input type="submit" class="btn btn-dark m-1" value="Add">
                 <a class="btn btn-dark" href="../public/admin_page.php">Cancel</a>
             </div>
         </form>
