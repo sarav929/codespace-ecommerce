@@ -26,8 +26,7 @@
             # Connecting to the Database 
             require ('../config/connect.php');
 
-            # handle updating of cart 
-
+            # show cart content with quantity > 0 or remove 
             if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['qty'])) {
                 foreach ($_POST['qty'] as $id => $quantity) {
                     $quantity = max(0, (int)$quantity); // Ensure a valid quantity
@@ -37,6 +36,7 @@
                         unset($_SESSION['cart'][$id]); // Remove item if quantity is zero
                     }
                 }
+
                 header('Location: ../public/cart.php'); // Redirect to avoid form resubmission
                 exit;
             }
@@ -50,39 +50,52 @@
             $r = mysqli_query($link, $q);
         
             # Display body section with a form and a table.
-            echo '<form action="../public/cart.php" method="post">';
-        
-            while ($row = mysqli_fetch_array ($r, MYSQLI_ASSOC)) {
-        
-                # Calculate sub-totals and grand total.
-                $subtotal = $_SESSION['cart'][$row['item_id']]['quantity'] * $_SESSION['cart'][$row['item_id']]['price'];
-                $total += $subtotal;
-        
-                # Display the row/s:
-                echo "<div class='cart-item-container'>
-                    <div class='first-row'>
-                    <h2>{$row['item_name']}</h2>
-                    <button data-decrease>-</button> 
-                    <input id='input-qty' type=\"text\" 
-                        size=\"3\" 
-                        name=\"qty[{$row['item_id']}]\" 
-                        value=\"{$_SESSION['cart'][$row['item_id']]['quantity']}\"> 
-                    <button data-increase>+</button>
-                    <button data-remove>Remove</button>
-                    </div> 
-                    <div class='item-total'> &pound ".number_format ($subtotal, 2)." </div>
-                </div>";     
+            echo '<div class="col">
+            <form action="../public/cart.php" method="post">';
+
+            if ($r && mysqli_num_rows($r) > 0) {
+            echo '<div class="container-fluid">
+                <table class="table table-bordered">
+                <tbody>';
             }
 
-            # Display the total.
-            echo '<p id="order-total">Order Total: &pound '.number_format($total,2).'</p>
-            <p><input type="submit" name="submit" class="btn btn-light btn-block" value="Update My Cart"></p>
-            <br>
-            <a href="../includes/checkout.php?total='.$total.'" class="btn btn-light btn-block">Checkout Now</a><br>
-            </form>'; 
-            
-            print_r($_SESSION['cart']);
-        }
+            while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+            # Calculate sub-totals and grand total.
+            $subtotal = $_SESSION['cart'][$row['item_id']]['quantity'] * $_SESSION['cart'][$row['item_id']]['price'];
+            $total += $subtotal;
+
+            # Display the row.
+            echo "<tr>
+                    <td>
+                        <h5>{$row['item_name']}</h5>
+                    </td>
+                    <td class='d-flex align-items-center'>
+                        <button data-decrease class='btn btn-dark rounded-circle mx-2'>-</button>
+                        <input class='border-0 text-center rounded' id='input-qty' type='text' 
+                            size='3' 
+                            name='qty[{$row['item_id']}]' 
+                            value='{$_SESSION['cart'][$row['item_id']]['quantity']}'> 
+                        <button data-increase class='btn btn-dark rounded-circle mx-2'>+</button>
+                    </td>
+                    <td>&pound; " . number_format($subtotal, 2) . "</td>
+                </tr>";
+            }
+
+            echo '</tbody>
+            </table>';
+
+            # Display the total and checkout button.
+            echo '<div class="d-flex justify-content-between align-items-center my-4">
+                <h5 id="order-total">Order Total: &pound; ' . number_format($total, 2) . '</h5>
+                <a href="../includes/checkout.php?total=' . $total . '" class="btn btn-light btn-lg">Checkout Now</a>
+            </div>';
+
+            echo '</form>';
+            } else {
+            echo '<h2 class="text-center mt-5">Your cart is currently empty.</h2>';
+            }
+
+            echo '</div>';
 
         include '../includes/footer.php'; ?>
         
@@ -107,18 +120,10 @@
             button.addEventListener('click', () => {
                 const input = button.nextElementSibling; // Input element
                 const currentQty = parseInt(input.value);
-                if (currentQty > 1) { // Prevent negative or zero quantity
-                    input.value = currentQty - 1;
-                }
+                input.value = currentQty - 1;
             });
         });
 
-        removeBtns.forEach(button => {
-            button.addEventListener('click', () => {
-                const row = button.closest('.cart-item-container'); // Parent container
-                row.remove(); // Remove the item row
-            });
-        });
     });
         
     </script>

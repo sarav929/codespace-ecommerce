@@ -10,6 +10,9 @@
     align-items: center;
 }
 
+.remove-item {
+    width: 1rem;
+}
 
 .dropdown-icon .button-icon {
     width: 1rem;
