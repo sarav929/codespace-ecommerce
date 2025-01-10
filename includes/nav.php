@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link mr-5" href="../public/products.php">Shop</a>
+                    <a class="nav-link mr-5" href="../public/session_cart.php">Shop</a>
                 </li>
             </ul>
         </div>
@@ -78,7 +78,7 @@
             
             <!-- shopping cart  -->
 
-            <a class="nav-link dropdown-toggle" href="../public/shopping-cart">
+            <a class="nav-link dropdown-toggle" href="../public/cart.php">
                 <img class="nav-icon cart-icon" src="../assets/icons/bag.png" alt="Shopping Cart">
             </a>
         </div>
