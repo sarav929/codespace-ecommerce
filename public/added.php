@@ -1,6 +1,4 @@
 <?php 
-
-include ('../public/session_cart.php');
 require ('../config/connect.php');
 
 # Getting the product id from the URL.
@@ -47,7 +45,7 @@ if (isset( $_SESSION['cart'][$id] )) {
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <p>'.$row["item_name"].' has been added to your cart</p>
-            <a href="home.php">Continue Shopping</a> | <a href="cart.php">View Your Cart</a>
+            <a href="../public/index.php">Continue Shopping</a> | <a href="../public/cart.php">View Your Cart</a>
             </div>
         </div>' ;
 }
@@ -70,5 +68,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         }
     }
 }
+
+include ('../public/session_cart.php');
 
 ?>

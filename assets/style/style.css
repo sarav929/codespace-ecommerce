@@ -55,3 +55,15 @@ footer {
 .navbar .dropdown-toggle::after {
     display: none !important;
 }
+
+.bag-icon {
+    position: relative;
+}
+
+.notification-badge {
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+}
+
+

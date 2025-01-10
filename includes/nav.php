@@ -76,15 +76,22 @@
             </div>
             <?php endif; ?>
             
-            <!-- shopping cart  -->
+            <!-- shopping cart  -->            
+            
+                <a class="nav-link dropdown-toggle bag-icon position-relative" href="../public/cart.php">
+                    <img class="nav-icon cart-icon" src="../assets/icons/bag.png" alt="Shopping Cart">
 
-            <a class="nav-link dropdown-toggle" href="../public/cart.php">
-                <img class="nav-icon cart-icon" src="../assets/icons/bag.png" alt="Shopping Cart">
-            </a>
+                    <?php 
+                        if ($_SESSION['cart']) {
+                            echo '<span class="position-absolute top-0 start-100 translate-middle p-2 bg-secondary rounded-circle"></span>';
+                        }
+                    ?>
+                </a>      
+            </div>
         </div>
     </div>
-
-
         
     </div>
+
 </nav>
+
