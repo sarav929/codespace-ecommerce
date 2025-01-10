@@ -43,7 +43,7 @@
             <div class="alert alert-success">
                 <h4 class="alert-heading">Thank you for your purchase!</h4>
                 <p>Your order has been placed successfully. Your order ID is #<?php echo $orderId; ?>. Total Amount: &pound;<?php echo number_format($orderTotal, 2); ?>.</p>
-                <a href="../public/index.php">Back to Home</a>
+                <a href="../public/index.php">Back to Home</a> | <a href="../public/my_orders.php">My Orders</a> 
             </div>
         <?php else: ?>
             <div class="alert alert-danger">
