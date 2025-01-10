@@ -47,7 +47,7 @@
                         
                     <div class="dropdown-menu" aria-labelledby="userDropdown">
                         <a class="dropdown-item d-flex align-items-center" href="../includes/logout.php"><img src="../assets/icons/logout.png" class="dropdown-icon"> Log Out</a>
-
+                        <a class="dropdown-item d-flex align-items-center" href="../public/my_orders.php"><img src="../assets/icons/bag.png" class="dropdown-icon"> My Orders</a>
                         <!-- admin page for admin account -->
                         <?php if (isset($_SESSION[ 'user_id' ]) && $_SESSION[ 'user_id' ] == 8): ?>
                             <a class="dropdown-item d-flex align-items-center" href="../public/admin_page.php"><img src="../assets/icons/settings.png" class="dropdown-icon">Manage Shop</a>
