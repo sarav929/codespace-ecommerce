@@ -59,7 +59,7 @@
 
                 # Or display message.
                 else { 
-                    echo '<p>There are currently no items in the table to display.</p>'; 
+                    echo '<p>There are currently no items in the shop.</p>'; 
                 }
                 ?>
             </div>
