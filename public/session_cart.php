@@ -35,18 +35,16 @@
                         echo '
                         <div class="col-md-3 d-flex justify-content-center mt-4 p-3 text-center">
                         <div class="card" style="width: 18rem;">
+                            <a href="../public/product_page.php?id=' . $row['item_id'] . '">
                             <img src="../assets/img/' . $row['item_img'] . '.png" class="card-img-top" alt="Product Image">
+                            </a>
                             <div class="card-body">
                                 <h5 class="card-title text-center">' . $row['item_name'] . '</h5>
                                 <h6 class="card-title text-center">by ' . $row['item_brand'] . '</h6>
                                 <p class="card-text">' . $row['item_ml'] . ' ml</p>
                             </div>
                             <ul class="list-group list-group-flush text-center">
-                                <li class="list-group-item"><p class="d-flex justify-content-center align-items-center">' . $row['item_price'] . '</p></li>
-                                <li class="list-group-item">
-                                    <a class="btn btn-dark" href="../public/product_page.php?id=' . $row['item_id'] . '">View More</a>
-                                    <a class="btn btn-dark" href="../public/added.php?id=' . $row['item_id'] . '">Add to bag</a>
-                                </li>
+                                <li class="list-group-item"><p class="d-flex justify-content-center align-items-center">£ ' . $row['item_price'] . '</p></li>
                             </ul>
                         </div>
                     </div>';
