@@ -43,7 +43,7 @@
                             <ul class="list-group list-group-flush text-center">
                                 <li class="list-group-item"><p class="d-flex justify-content-center align-items-center">' . $row['item_price'] . '</p></li>
                                 <li class="list-group-item">
-                                    <a class="btn btn-dark" href="#' . $row['item_id'] . '">View More</a>
+                                    <a class="btn btn-dark" href="../public/product_page.php?id=' . $row['item_id'] . '">View More</a>
                                 </li>
                                 <li class="list-group-item">
                                     <a class="btn btn-dark" href="../public/added.php?id=' . $row['item_id'] . '">Add to bag</a>
