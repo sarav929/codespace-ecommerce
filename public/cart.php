@@ -19,6 +19,8 @@
 
         # Initialise grand total variable.
         $total = 0; 
+
+        print_r($_SESSION);
                 
         # Check the cart is not empty
         if (!empty($_SESSION['cart'])) {

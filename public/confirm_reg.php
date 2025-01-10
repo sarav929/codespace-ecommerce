@@ -1,16 +1,4 @@
-<?php 
-include '../includes/nav.php';
 
-// confirmation of registration
-
-echo '<div class="container-md p-5 text-center">
-        <p>Thank you! You are now registered.</p> 
-        <a class="alert-link" href="login.php">Login</a>
-    </div>';
-
-include '../includes/footer.php';
-
-?>
 
 
 <!DOCTYPE html>
@@ -30,6 +18,20 @@ include '../includes/footer.php';
 
     </head>
     <body>
+
+        <?php 
+        include '../includes/nav.php';
+
+        // confirmation of registration
+
+        echo '<div class="container-md p-5 text-center">
+                <p>Thank you! You are now registered.</p> 
+                <a class="alert-link" href="../public/login.php">Login</a>
+            </div>';
+
+        include '../includes/footer.php';
+
+        ?>
         
     </body>
 </html>
