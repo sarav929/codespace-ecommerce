@@ -14,6 +14,10 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+// Initialize order status
+$orderStatus = '';
+$orderId = '';
+
 # Check for Order Conditions
 if (isset($_GET['total']) && ($_GET['total'] > 0) && (!empty($_SESSION['cart']))) {
 
@@ -38,28 +42,47 @@ if (isset($_GET['total']) && ($_GET['total'] > 0) && (!empty($_SESSION['cart']))
     $q = substr($q, 0, -1) . ') ORDER BY item_id ASC';
     $r = mysqli_query($link, $q);
 
-    # Store Order Content
-    while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-        $query = "INSERT INTO order_contents (order_id, item_id, quantity, price)
-                  VALUES ($order_id, 
-                          {$row['item_id']},
-                          {$_SESSION['cart'][$row['item_id']]['quantity']},
-                          {$_SESSION['cart'][$row['item_id']]['price']})";
-        $result = mysqli_query($link, $query);
+    if ($r) {
+        // Order inserted successfully, get order ID
+        $orderId = mysqli_insert_id($link);
+        $_SESSION['order_status'] = 'success';
+        $_SESSION['order_id'] = $orderId;  // Store order ID for use on confirmation page
+        $_SESSION['order_total'] = $_GET['total']; // Store order total
+
+        // Insert items into order_contents table
+        $q = "SELECT * FROM products WHERE item_id IN ("; 
+        foreach ($_SESSION['cart'] as $id => $value) {
+            $q .= $id . ',';
+        }
+        $q = rtrim($q, ',') . ') ORDER BY item_id ASC';
+        $r = mysqli_query($link, $q);
+
+        while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+            $query = "INSERT INTO order_contents (order_id, item_id, quantity, price)
+                      VALUES ({$orderId}, {$row['item_id']}, {$_SESSION['cart'][$row['item_id']]['quantity']}, {$row['price']})";
+            mysqli_query($link, $query);
+        }
+
+        // Clear cart after order is placed
+        $_SESSION['cart'] = [];
+
+        // Redirect to confirmation page
+        header('Location: order_confirmation.php');
+        exit();
+    } else {
+        // If order placement fails, set status as error
+        $_SESSION['order_status'] = 'error';
+        header('Location: ../public/order_confirmation.php');
+        exit();
     }
 
-    # Close Database Connection
     mysqli_close($link);
-
-    # Display Order Confirmation
-    echo "<p>Thanks for your order. Your Order Number Is #$order_id</p>";
-
-    # Clear Cart
-    $_SESSION['cart'] = NULL;
 } else {
-    echo "<p>Error: Your cart is empty or invalid total amount.</p>";
+    // If there's an issue with the cart or total
+    $_SESSION['order_status'] = 'error';
+    header('Location: ../public/order_confirmation.php');
+    exit();
 }
-
 // Send the output buffer
 ob_end_flush();
 ?>
