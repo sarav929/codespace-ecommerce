@@ -43,7 +43,7 @@
         # Render product page
         echo '
         <div class="container-fluid d-flex mt-5">
-            <img class="img-fluid" src="../assets/img/'.$row["item_img"].'.png">
+            <img class="img-fluid" src="../assets/img/'.$row["item_img"].'.jpg">
             <div class="container flex-col">
                 <h1>'.$row["item_name"].' <span>by '.$row["item_brand"].'</span></h1>
                 <h4>'.$row["item_type"].'</h4>
@@ -52,7 +52,7 @@
 
                 <h6>£ '.$row["item_price"].' ('.$row["item_ml"].' ml)</h6>
     
-                <a class="btn btn-dark" href="../public/added.php?id=' . $row['item_id'] . '">Add to bag</a>
+                <a class="btn btn-dark" href="../includes/added.php?id=' . $row['item_id'] . '">Add to bag</a>
 
                 <h5>Notes</h5>
                 <div> • ';

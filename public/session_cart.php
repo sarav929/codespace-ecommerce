@@ -14,11 +14,13 @@
 
     </head>
         <body>
-        <?php include '../includes/nav.php'; ?>
-
-                
+        <?php include '../includes/nav.php'; ?>      
             
             <?php 
+
+                if (!isset($_SESSION[ 'user_id' ])) {
+                    session_start();
+                }
 
                 # open database connection.
                 require ( '../config/connect.php' );
@@ -26,7 +28,7 @@
                 echo '<div class="row">';	
 
                 # Retrieve items from 'products' database table.
-                $q = "SELECT * FROM products" ;
+                $q = "SELECT * FROM products ORDER BY item_brand" ;
                 $r = mysqli_query( $link, $q ) ;
                 if ( mysqli_num_rows( $r ) > 0 ) {
 
@@ -36,7 +38,7 @@
                         <div class="col-md-3 d-flex justify-content-center mt-4 p-3 text-center">
                         <div class="card" style="width: 18rem;">
                             <a href="../public/product_page.php?id=' . $row['item_id'] . '">
-                            <img src="../assets/img/' . $row['item_img'] . '.png" class="card-img-top" alt="Product Image">
+                            <img src="../assets/img/' . $row['item_img'] . '.jpg" class="card-img-top" alt="Product Image">
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title text-center">' . $row['item_name'] . '</h5>
@@ -56,7 +58,9 @@
 
                 # Or display message.
                 else { 
-                    echo '<p>There are currently no items in the shop.</p>'; 
+                    echo '<div class="container-fluid mt-5 text-center">
+                    <h4>There are currently no items in the shop.</h4>
+                    </div>'; 
                 }
                 ?>
             </div>

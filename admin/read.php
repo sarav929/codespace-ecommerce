@@ -29,7 +29,7 @@
                 echo '
                 <div class="col-md-3 d-flex justify-content-center mt-4 p-3 text-center">
                     <div class="card" style="width: 18rem;">
-                        <img src="../assets/img/' . htmlspecialchars($item_img) . '.png" class="card-img-top" alt="Product Image">
+                        <img src="../assets/img/' . htmlspecialchars($item_img) . '.jpg" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <h5 class="card-title text-center">' . htmlspecialchars($item_name) . '</h5>
                             <p class="card-text">by ' . htmlspecialchars($item_brand) . '</p>

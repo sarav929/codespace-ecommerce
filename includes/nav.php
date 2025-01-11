@@ -80,9 +80,9 @@
             
                 <a class="nav-link dropdown-toggle bag-icon position-relative" href="../public/cart.php">
                     <img class="nav-icon cart-icon" src="../assets/icons/bag.png" alt="Shopping Cart">
-
                     <?php 
-                        if ($_SESSION['cart']) {
+                    # notification badge for bag content
+                        if (isset($_SESSION['cart'])) {
                             echo '<span class="position-absolute top-0 start-100 translate-middle p-2 bg-secondary rounded-circle"></span>';
                         }
                     ?>
