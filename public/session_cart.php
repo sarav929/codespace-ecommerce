@@ -18,7 +18,7 @@
             
             <?php 
 
-                if (!isset($_SESSION[ 'user_id' ])) {
+                if (session_status() === PHP_SESSION_NONE) {
                     session_start();
                 }
 
