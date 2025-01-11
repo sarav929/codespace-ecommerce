@@ -1,62 +1,59 @@
-<?php 
+<?php
 
 session_start();
+
 require ('../config/connect.php');
 
-# Getting the product id from the URL.
-if (isset( $_GET['id'])) {
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 
-# Initialize cart array if not already set
 if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = []; 
+    $_SESSION['cart'] = [];
 }
 
-# Querying product information 
 $q = "SELECT * FROM products WHERE item_id = $id";
-$r = mysqli_query( $link, $q );
+$r = mysqli_query($link, $q);
 
-# Handling Query Result
-
-if ( mysqli_num_rows( $r ) == 1 ) {
-    $row = mysqli_fetch_array( $r, MYSQLI_ASSOC );
-    // Product details are fetched and stored in $row
+if (mysqli_num_rows($r) == 1) {
+    $row = mysqli_fetch_array($r, MYSQLI_ASSOC);
 }
 
-# Check if cart already contains one of this product id.
-if (isset( $_SESSION['cart'][$id])) { 
-
-  # Add one more of this product.
-  $_SESSION['cart'][$id]['quantity']++; 
-  echo '
-  <div class="container">
-          <div class="alert alert-secondary" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-              <p>Another '.$row["item_name"].' has been added to your cart</p>
-              <a href="home.php">Continue Shopping</a> | <a href="cart.php">View Your Cart</a>
-          </div>
-      </div>';
-
+if (isset($_SESSION['cart'][$id])) {
+    $_SESSION['cart'][$id]['quantity']++;
 } else {
-
-  # Or add one of this product to the cart.
-  $_SESSION['cart'][$id]= array ( 'quantity' => 1, 'price' => $row['item_price'] ) ;
-  echo '<div class="container">
-          <div class="alert alert-secondary" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-              <p>'.$row["item_name"].' has been added to your cart</p>
-          <a href="../public/session_cart.php">Continue Shopping</a> | <a href="../public/cart.php">View Your Cart</a>
-          </div>
-      </div>' ;
-
+    $_SESSION['cart'][$id] = array('quantity' => 1, 'price' => $row['item_price']);
 }
 
-print_r($_SESSION['cart']);
+# Cart Update Modal #
 
-include ('../public/session_cart.php');
+echo '
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cartModalLabel">Cart Update</h5>
+                <button type="button" class="close" aria-label="Close">✕</button>
+            </div>
+            <div class="modal-body">
+                '.htmlspecialchars($row["item_name"]).' has been added to your cart.
+            </div>
+            <div class="modal-footer">
+                <a href="../public/session_cart.php" class="btn btn-dark">Continue Shopping</a>
+                <a href="../public/cart.php" class="btn btn-dark">View Your Cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var modal = new bootstrap.Modal(document.getElementById("cartModal"));
+        modal.show();
+    });
+</script>
+';
+
+include ('../public/product_page.php');
+
 ?>
