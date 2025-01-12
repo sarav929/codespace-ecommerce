@@ -52,10 +52,38 @@
             $price = mysqli_real_escape_string($link, trim($_POST['item_price']));
         }
 
+        # brand: 
+        if (empty($_POST['item_brand'])) {
+            $errors['item_brand'] = 'Enter the item brand.';
+        } else {
+            $brand = mysqli_real_escape_string($link, trim($_POST['item_brand']));
+        }
+
+        # notes: 
+        if (empty($_POST['item_notes'])) {
+            $errors['item_notes'] = 'Enter the item notes (separated by commas).';
+        } else {
+            $notes = mysqli_real_escape_string($link, trim($_POST['item_notes']));
+        }
+
+        # type: 
+        if (empty($_POST['item_type'])) {
+            $errors['item_type'] = 'Enter the item type (if multiple, separated by commas).';
+        } else {
+            $type = mysqli_real_escape_string($link, trim($_POST['item_type']));
+        }
+
+        # ml: 
+        if (empty($_POST['item_ml'])) {
+            $errors['item_ml'] = 'Enter the item capacity in ml.';
+        } else {
+            $ml = mysqli_real_escape_string($link, trim($_POST['item_ml']));
+        }
+
         # 4. if connection to db is successful: insert data into the table
         if (empty($errors)) {
-            $q = "INSERT INTO products (item_name, item_desc, item_img, item_price)
-            VALUES ('$name', '$descr', '$img', '$price')";
+            $q = "INSERT INTO products (item_name, item_desc, item_img, item_price, item_brand, item_notes, item_type, item_ml)
+            VALUES ('$name', '$descr', '$img', '$price', '$brand', '$notes', '$type', '$ml')";
 
             $r = @mysqli_query($link, $q);
             if ($r) {
@@ -86,6 +114,42 @@
 
             <div class="invalid-feedback">
                 <?php echo isset($errors['item_name']) ? $errors['item_name'] : ''; ?>
+            </div>
+
+            <!-- item brand -->
+            <label for="brand" class="form-label">Item brand</label>
+            <input type="text" 
+            id="item_brand" 
+            class="form-control <?php echo isset($errors['item_brand']) ? 'is-invalid' : ''; ?>" 
+            name="item_brand" value="<?php echo isset($_POST['item_brand']) ? $_POST['item_brand'] : ''; ?>" 
+            required>
+
+            <div class="invalid-feedback">
+                <?php echo isset($errors['item_brand']) ? $errors['item_brand'] : ''; ?>
+            </div>
+
+            <!-- item type -->
+            <label for="type" class="form-label">Item type</label>
+            <input type="text" 
+            id="item_type" 
+            class="form-control <?php echo isset($errors['item_type']) ? 'is-invalid' : ''; ?>" 
+            name="item_type" value="<?php echo isset($_POST['item_type']) ? $_POST['item_type'] : ''; ?>" 
+            required>
+
+            <div class="invalid-feedback">
+                <?php echo isset($errors['item_type']) ? $errors['item_type'] : ''; ?>
+            </div>
+
+            <!-- item notes -->
+            <label for="notes" class="form-label">Item notes</label>
+            <input type="text" 
+            id="item_notes" 
+            class="form-control <?php echo isset($errors['item_notes']) ? 'is-invalid' : ''; ?>" 
+            name="item_notes" value="<?php echo isset($_POST['item_notes']) ? $_POST['item_notes'] : ''; ?>" 
+            required>
+
+            <div class="invalid-feedback">
+                <?php echo isset($errors['item_notes']) ? $errors['item_notes'] : ''; ?>
             </div>
 
             <!-- item description -->
@@ -121,7 +185,21 @@
             
             <div class="invalid-feedback">
                 <?php echo isset($errors['item_price']) ? $errors['item_price'] : ''; ?>
+            </div>            
+            
+            <!-- item ml -->
+            <label for="ml" class="form-label">Item capacity (ml)</label>
+            <input type="number" 
+            id="item_ml" 
+            class="form-control <?php echo isset($errors['item_ml']) ? 'is-invalid' : ''; ?>" 
+            name="item_ml" value="<?php echo isset($_POST['item_ml']) ? $_POST['item_ml'] : ''; ?>" 
+            required>
+
+            <div class="invalid-feedback">
+                <?php echo isset($errors['item_ml']) ? $errors['item_ml'] : ''; ?>
             </div>
+
+
 
             <!-- submit button -->
             <div class="text-center m-3">
@@ -131,7 +209,7 @@
         </form>
     </div>
 
-    <?php include '../includes/footer.php'; ?>
+    <?php #include '../includes/footer.php'; ?> 
 
 </body>
 </html>

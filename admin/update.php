@@ -36,6 +36,10 @@
             $item_desc = $row['item_desc'];
             $item_img = $row['item_img'];
             $item_price = $row['item_price'];
+            $item_brand = $row['item_brand'];
+            $item_notes = $row['item_notes'];
+            $item_type = $row['item_type'];
+            $item_ml = $row['item_ml'];
         } else {
             echo "Item not found.";
         }
@@ -75,6 +79,30 @@
             $price = mysqli_real_escape_string($link, trim($_POST['item_price']));
         }
 
+        if (empty($_POST['item_brand'])) {
+            $errors['item_brand'] = 'Enter the item brand.';
+        } else {
+            $brand = mysqli_real_escape_string($link, trim($_POST['item_brand']));
+        }
+
+        if (empty($_POST['item_notes'])) {
+            $errors['item_notes'] = 'Enter the item notes (separated by commas).';
+        } else {
+            $notes = mysqli_real_escape_string($link, trim($_POST['item_notes']));
+        }
+
+        if (empty($_POST['item_type'])) {
+            $errors['item_type'] = 'Enter the item type (if multiple, separated by commas).';
+        } else {
+            $type = mysqli_real_escape_string($link, trim($_POST['item_type']));
+        }
+
+        if (empty($_POST['item_ml'])) {
+            $errors['item_ml'] = 'Enter the item capacity in ml.';
+        } else {
+            $ml = mysqli_real_escape_string($link, trim($_POST['item_ml']));
+        }
+
         # If no errors, update the database
         if (empty($errors)) {
             $q = "UPDATE products 
@@ -108,24 +136,62 @@
             <input type="hidden" name="item_id" value="<?php echo $id; ?>">
 
             <!-- item name -->
-            <label for="name">Item name</label>
+            <label for="name" class="form-label">Item name</label>
             <input type="text" 
             id="item_name" 
             class="form-control <?php echo isset($errors['item_name']) ? 'is-invalid' : ''; ?>" 
             name="item_name" 
-            value="<?php echo isset($_POST['item_name']) ? $_POST['item_name'] : $item_name; ?>" 
+            value="<?php echo isset($_POST['item_name']) ? $_POST['item_name'] : $item_name; ?>"
             required>
 
             <div class="invalid-feedback">
                 <?php echo isset($errors['item_name']) ? $errors['item_name'] : ''; ?>
             </div>
 
+            <!-- item brand -->
+            <label for="brand" class="form-label">Item brand</label>
+            <input type="text" 
+            id="item_brand" 
+            class="form-control <?php echo isset($errors['item_brand']) ? 'is-invalid' : ''; ?>" 
+            name="item_brand"
+            value="<?php echo isset($_POST['item_brand']) ? $_POST['item_brand'] : $item_brand; ?>" 
+            required>
+
+            <div class="invalid-feedback">
+                <?php echo isset($errors['item_brand']) ? $errors['item_brand'] : ''; ?>
+            </div>
+
+            <!-- item type -->
+            <label for="type" class="form-label">Item type</label>
+            <input type="text" 
+            id="item_type" 
+            class="form-control <?php echo isset($errors['item_type']) ? 'is-invalid' : ''; ?>" 
+            name="item_type" 
+            value="<?php echo isset($_POST['item_type']) ? $_POST['item_type'] : $item_type; ?>"  
+            required>
+
+            <div class="invalid-feedback">
+                <?php echo isset($errors['item_type']) ? $errors['item_type'] : ''; ?>
+            </div>
+
+            <!-- item notes -->
+            <label for="notes" class="form-label">Item notes</label>
+            <input type="text" 
+            id="item_notes" 
+            class="form-control <?php echo isset($errors['item_notes']) ? 'is-invalid' : ''; ?>" 
+            name="item_notes" 
+            value="<?php echo isset($_POST['item_notes']) ? $_POST['item_notes'] : $item_notes; ?>"  
+            required>
+
+            <div class="invalid-feedback">
+                <?php echo isset($errors['item_notes']) ? $errors['item_notes'] : ''; ?>
+            </div>
+
             <!-- item description -->
-            <label for="description">Description</label>
-            <textarea 
-            id="item_desc" 
-            class="form-control <?php echo isset($errors['item_desc']) ? 'is-invalid' : ''; ?>" 
-            name="item_desc" 
+            <label for="description" class="form-label">Description</label>
+            <textarea id="item_desc" 
+            class="form-control <?php echo isset($errors['item_desc']) ? 'is-invalid' : ''; ?>"
+            name="item_desc"
             required><?php echo isset($_POST['item_desc']) ? $_POST['item_desc'] : $item_desc; ?></textarea>
 
             <div class="invalid-feedback">
@@ -133,12 +199,12 @@
             </div>
 
             <!-- item image -->
-            <label for="image">Image</label>
+            <label for="img" class="form-label">Image</label>
             <input type="text" 
             id="item_img" 
             class="form-control <?php echo isset($errors['item_img']) ? 'is-invalid' : ''; ?>" 
             name="item_img" 
-            value="<?php echo isset($_POST['item_img']) ? $_POST['item_img'] : $item_img; ?>" 
+            value="<?php echo isset($_POST['item_img']) ? $_POST['item_img'] : $item_img; ?>"  
             required>
 
             <div class="invalid-feedback">
@@ -146,16 +212,29 @@
             </div>
 
             <!-- item price -->
-            <label for="price">Price</label>
+            <label for="price" class="form-label">Price</label>
             <input type="number" 
             id="item_price" 
             class="form-control <?php echo isset($errors['item_price']) ? 'is-invalid' : ''; ?>" 
             name="item_price" min="0" step="0.01" 
             value="<?php echo isset($_POST['item_price']) ? $_POST['item_price'] : $item_price; ?>" 
             required>
-
+            
             <div class="invalid-feedback">
                 <?php echo isset($errors['item_price']) ? $errors['item_price'] : ''; ?>
+            </div>            
+            
+            <!-- item ml -->
+            <label for="ml" class="form-label">Item capacity (ml)</label>
+            <input type="number" 
+            id="item_ml" 
+            class="form-control <?php echo isset($errors['item_ml']) ? 'is-invalid' : ''; ?>" 
+            name="item_ml" 
+            value="<?php echo isset($_POST['item_ml']) ? $_POST['item_ml'] : $item_ml; ?>"
+            required>
+
+            <div class="invalid-feedback">
+                <?php echo isset($errors['item_ml']) ? $errors['item_ml'] : ''; ?>
             </div>
 
             <!-- submit button -->

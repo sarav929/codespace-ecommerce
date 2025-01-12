@@ -67,7 +67,37 @@ if (isset($_GET['total']) && ($_GET['total'] > 0) && (!empty($_SESSION['cart']))
     // If there's an issue with the cart or total
     $_SESSION['order_status'] = 'error';
     $_SESSION['error_message'] = 'Invalid cart or total amount.';
-    header('Location: ../public/order_confirmation.php');
+
+
+    # Cart Update Modal #
+
+        echo '
+        <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cartModalLabel">Cart Update</h5>
+                        <button type="button" class="close" aria-label="Close">✕</button>
+                    </div>
+                    <div class="modal-body">
+                        '.htmlspecialchars($row["item_name"]).' has been added to your cart.
+                    </div>
+                    <div class="modal-footer">
+                        <a href="../public/session_cart.php" class="btn btn-dark">Continue Shopping</a>
+                        <a href="../public/cart.php" class="btn btn-dark">View Your Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var modal = new bootstrap.Modal(document.getElementById("cartModal"));
+                modal.show();
+            });
+        </script>
+        ';
+    
     exit();
 }
 

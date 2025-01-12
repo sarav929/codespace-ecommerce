@@ -36,15 +36,34 @@
             // Product details are fetched and stored in $row
         }
 
+        # perfume notes array
+
+        $notes = explode(", ", $row["item_notes"]);
+
         # Render product page
-        echo '<div class="container">
-                <h1>'.$row["item_name"].'</h1>
-                <img src="'.$row["item_img"].'">
+        echo '
+        <div class="container-fluid d-flex mt-5">
+            <img class="img-fluid" src="../assets/img/'.$row["item_img"].'.jpg">
+            <div class="container flex-col">
+                <h1>'.$row["item_name"].' <span>by '.$row["item_brand"].'</span></h1>
+                <h4>'.$row["item_type"].'</h4>
+                    
                 <p>'.$row["item_desc"].'</p>
+
+                <h6>£ '.$row["item_price"].' ('.$row["item_ml"].' ml)</h6>
     
-                <a class="btn btn-dark" data-toggle="modal" data-target="#bagModal" href="../public/added.php?id=' . $row['item_id'] . '">Add to bag</a>
+                <a class="btn btn-dark" href="../includes/added.php?id=' . $row['item_id'] . '">Add to bag</a>
+
+                <h5>Notes</h5>
+                <div> • ';
+
+                foreach($notes as $note) {
+                    echo '<span class="note">'. $note . '</span> • '; 
+                }
+                            
+                echo'</div>
             </div>
-         </div>';
+        </div>';
         
         include '../includes/footer.php'; 
         ?>        

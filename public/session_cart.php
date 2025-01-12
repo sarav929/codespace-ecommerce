@@ -14,11 +14,13 @@
 
     </head>
         <body>
-        <?php include '../includes/nav.php'; ?>
-
-                
+        <?php include '../includes/nav.php'; ?>      
             
             <?php 
+
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
 
                 # open database connection.
                 require ( '../config/connect.php' );
@@ -26,7 +28,7 @@
                 echo '<div class="row">';	
 
                 # Retrieve items from 'products' database table.
-                $q = "SELECT * FROM products" ;
+                $q = "SELECT * FROM products ORDER BY item_brand" ;
                 $r = mysqli_query( $link, $q ) ;
                 if ( mysqli_num_rows( $r ) > 0 ) {
 
@@ -35,19 +37,16 @@
                         echo '
                         <div class="col-md-3 d-flex justify-content-center mt-4 p-3 text-center">
                         <div class="card" style="width: 18rem;">
-                            <img src="../assets/img/' . $row['item_img'] . '" class="card-img-top" alt="Product Image">
+                            <a href="../public/product_page.php?id=' . $row['item_id'] . '">
+                            <img src="../assets/img/' . $row['item_img'] . '.jpg" class="card-img-top" alt="Product Image">
+                            </a>
                             <div class="card-body">
                                 <h5 class="card-title text-center">' . $row['item_name'] . '</h5>
-                                <p class="card-text">' . $row['item_desc'] . '</p>
+                                <h6 class="card-title text-center">by ' . $row['item_brand'] . '</h6>
+                                <p class="card-text">' . $row['item_ml'] . ' ml</p>
                             </div>
                             <ul class="list-group list-group-flush text-center">
-                                <li class="list-group-item"><p class="d-flex justify-content-center align-items-center">' . $row['item_price'] . '</p></li>
-                                <li class="list-group-item">
-                                    <a class="btn btn-dark" href="../public/product_page.php?id=' . $row['item_id'] . '">View More</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a class="btn btn-dark" href="../public/added.php?id=' . $row['item_id'] . '">Add to bag</a>
-                                </li>
+                                <li class="list-group-item"><p class="d-flex justify-content-center align-items-center">£ ' . $row['item_price'] . '</p></li>
                             </ul>
                         </div>
                     </div>';
@@ -59,7 +58,9 @@
 
                 # Or display message.
                 else { 
-                    echo '<p>There are currently no items in the shop.</p>'; 
+                    echo '<div class="container-fluid mt-5 text-center">
+                    <h4>There are currently no items in the shop.</h4>
+                    </div>'; 
                 }
                 ?>
             </div>
