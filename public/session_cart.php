@@ -70,10 +70,10 @@
 
         # Page Content
         echo "<div class='container m-auto'>
-            <div class='mt-5 text-center'> 
-                <h2>Fragrances</h2>
-                <p class='font-italic'>Explore our selection of eaux and extraits de parfum</p> 
-            </div>";
+        <div class='mt-5 d-flex flex-column align-items-center text-center'> 
+            <h2>Fragrances</h2>
+            <p class='font-italic'>Explore our selection of eaux and extraits de parfum</p> 
+        </div>";
 
             # container for dropdowns
             echo "<div class='container d-flex align-items-center mt-4 text-right'>

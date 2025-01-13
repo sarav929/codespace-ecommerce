@@ -8,28 +8,25 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark pr-5 pl-5">
     <div class="container-fluid d-flex justify-content-between align-items-center">
+
         <!-- logo -->
-        <a class="navbar-brand mr-5" href="../public/index.php">MKTIME</a>
+        <div class="nav-left d-flex align-items-center">
+            <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle mr-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ☰
+            </button>
+            <div class="dropdown-menu dropdown-menu">
+                <a href="index.php" class="dropdown-item" type="button">Home</a>
+                <a href="session_cart.php" class="dropdown-item" type="button">Shop</a>
+            </div>
+            </div>
+            <a class="navbar-brand mr-5" href="../public/index.php">Nocturne Scents</a>
 
-        <!-- collapse nav -->
-        <button class="navbar-toggler" type="button" 
-                data-toggle="collapse" 
-                data-target="#navbarNav" 
-                aria-controls="navbarNav" 
-                aria-expanded="false" 
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- nav links -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link mr-5" href="../public/session_cart.php">Shop</a>
-                </li>
-            </ul>
+            <form class='form-inline' action="../public/session_cart.php" method="post">
+                <input class='form-control mr-sm-2' type='search' placeholder='Search' aria-label='Search'>
+                <button class='btn btn-light my-2 my-sm-0' type='submit'>Search</button>
+            </form>
         </div>
-    
 
         <div class="nav-right">
 
