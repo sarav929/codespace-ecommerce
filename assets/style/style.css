@@ -104,4 +104,20 @@ nav {
 }
 
 
+@media only screen and (max-width: 920px) {
+    .product-wrapper {
+      flex-direction: column;
+      justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    .logged-username {
+      display: none;
+    }
+
+    .navbar-brand {
+        display: none!important;
+    }
+}
 

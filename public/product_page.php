@@ -42,7 +42,7 @@
 
         # Render product page
         echo '
-        <div class="container-fluid d-flex mt-5">
+        <div class="container-fluid d-flex mt-5 align-items-center product-wrapper">
             <img class="img-fluid" src="../assets/img/'.$row["item_img"].'.jpg">
             <div class="container flex-col">
                 <h1 class="heading display-4 font-weight-bold">'.$row["item_name"].' <span class="heading font-weight-light">by '.$row["item_brand"].'</span></h1>
