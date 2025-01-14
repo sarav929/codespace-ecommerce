@@ -15,12 +15,13 @@
 </head>
 <body>
 
+
     <?php include '../includes/nav.php' ?>
     <div class="d-flex justify-content-center text-center mb-5"> 
         <div class="ard bg-dark text-white" style="position: relative; height: 50vh; width: 100vw;">
             <img class="card-img" src="../assets/img/header.jpg" style="object-fit: cover; height: 100%; width: 100%; opacity: 70%;" alt="Card image">
             <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center text-center">
-                <h1 class="card-title display-4 mb-3">Nocturne Scents</h1>
+                <h1 class="logo card-title display-4 mb-3">Nocturne Scents</h1>
                 <h5 class="card-subtitle mb-5 font-italic font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
                 <a href="../public/session_cart.php" class="btn btn-light btn-lg">Explore</a>
             </div>

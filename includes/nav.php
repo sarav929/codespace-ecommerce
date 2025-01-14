@@ -20,7 +20,7 @@
                 <a href="session_cart.php" class="dropdown-item" type="button">Shop</a>
             </div>
             </div>
-            <a class="navbar-brand mr-5" href="../public/index.php">Nocturne Scents</a>
+            <a class="navbar-brand mr-5 logo" href="../public/index.php">Nocturne Scents</a>
 
         </div>
 
