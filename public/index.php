@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MKTIME</title>
+    <title>Nocturne Scents</title>
     <link rel="stylesheet" href="../assets/style/style.css">
 
     <!-- Bootstrap CSS -->
@@ -29,7 +29,7 @@
     </div>
 
     <div class="d-flex flex-column justify-content-center text-center m-auto">
-        <h3 class="mb-5">About</h1>
+        <h3 class="heading title1 mb-3">About us</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> 
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>

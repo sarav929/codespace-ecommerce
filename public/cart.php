@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MKTIME</title>
+    <title>Nocturne Scents</title>
     <link rel="stylesheet" href="../assets/style/style.css">
 
     <!-- Bootstrap CSS -->
@@ -106,7 +106,7 @@
         </form>';
 
     } else {
-        echo '<h4 class="text-center mt-5">Your cart is currently empty</h4>';
+        echo '<p class="text-center mt-5 font-italic display-5">Your cart is currently empty</p>';
     }
 
     include '../includes/footer.php'; ?>  

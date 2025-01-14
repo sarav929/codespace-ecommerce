@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MKTIME</title>
+    <title>Nocturne Scents</title>
     <link rel="stylesheet" href="../assets/style/style.css">
 
     <!-- Bootstrap CSS -->
@@ -45,7 +45,7 @@
     ORDER BY orders.order_id, orders.order_date DESC";
 
     echo '<div class="container text-center mt-5 mb-5"> 
-        <h2>My Orders</h2>
+        <h2 class="heading title1">My Orders</h2>
     </div>';
 
     $r = mysqli_query($link, $q);

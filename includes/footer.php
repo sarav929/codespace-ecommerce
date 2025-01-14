@@ -1,4 +1,4 @@
-<footer class="bg-dark text-center text-white py-3 w-100">
+<footer class="bg-dark text-center text-white py-3 w-100 mt-5">
     <div class="d-flex justify-content-center mb-0">&copy; created by sarav929 | 
         <a class="d-flex align-items-center" href="https://github.com/sarav929">
             <img style="width:1.2em;filter:invert(100%);margin-left:.5em;" src="../assets/icons/github.png">
