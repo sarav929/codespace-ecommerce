@@ -26,8 +26,6 @@
             session_start();
         }
 
-        print_r($_SESSION);
-
         // Retrieve order status and details from session
         $orderStatus = isset($_SESSION['order_status']) ? $_SESSION['order_status'] : 'error';
         $orderId = isset($_SESSION['order_id']) ? $_SESSION['order_id'] : '';

@@ -16,12 +16,12 @@
 <body>
 
     <?php 
+    
+    include '../includes/nav.php';
 
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
-    
-    include '../includes/nav.php';
 
     # Update Cart
 
@@ -109,7 +109,7 @@
         echo '<h4 class="text-center mt-5">Your cart is currently empty</h4>';
     }
 
-    ?>
+    include '../includes/footer.php'; ?>  
     
 </body>
 </html>

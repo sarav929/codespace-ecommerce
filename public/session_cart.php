@@ -14,6 +14,7 @@
 
     </head>
         <body>
+
         <?php include '../includes/nav.php'; 
 
         if (session_status() === PHP_SESSION_NONE) {
@@ -160,6 +161,7 @@
         </div>';
 
         mysqli_close($link);
+        
         include '../includes/footer.php'; ?>  
     </body>
 </html>
