@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MKTIME</title>
+        <title>Nocturne Scents</title>
         <link rel="stylesheet" href="../assets/style/style.css">
 
         <!-- Bootstrap CSS -->
@@ -14,6 +14,7 @@
 
     </head>
         <body>
+
         <?php include '../includes/nav.php'; 
 
         if (session_status() === PHP_SESSION_NONE) {
@@ -71,8 +72,8 @@
         # Page Content
         echo "<div class='container m-auto'>
         <div class='mt-5 d-flex flex-column align-items-center text-center'> 
-            <h2>Fragrances</h2>
-            <p class='font-italic'>Explore our selection of eaux and extraits de parfum</p> 
+            <h1 class='heading title1'>Fragrances</h2>
+            <p>Explore our selection of eaux and extraits de parfum</p> 
         </div>";
 
             # container for dropdowns
@@ -141,7 +142,7 @@
                         <img src="../assets/img/' . $row['item_img'] . '.jpg" class="card-img-top" alt="Product Image">
                         </a>
                         <div class="card-body">
-                            <h5 class="card-title text-center">' . $row['item_name'] . '</h5>
+                            <h5 class="card-title text-center heading title2">' . $row['item_name'] . '</h5>
                             <h6 class="card-title text-center">' . $row['item_brand'] . '</h6>
                             <p class="card-text font-italic">' . $row['item_ml'] . ' ml</p>
                         </div>
@@ -160,6 +161,7 @@
         </div>';
 
         mysqli_close($link);
+        
         include '../includes/footer.php'; ?>  
     </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MKTIME</title>
+    <title>Nocturne Scents</title>
     <link rel="stylesheet" href="../assets/style/style.css">
 
     <!-- Bootstrap CSS -->
@@ -16,12 +16,12 @@
 <body>
 
     <?php 
+    
+    include '../includes/nav.php';
 
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
-    
-    include '../includes/nav.php';
 
     # Update Cart
 
@@ -106,10 +106,10 @@
         </form>';
 
     } else {
-        echo '<h4 class="text-center mt-5">Your cart is currently empty</h4>';
+        echo '<p class="text-center mt-5 font-italic display-5">Your cart is currently empty</p>';
     }
 
-    ?>
+    include '../includes/footer.php'; ?>  
     
 </body>
 </html>

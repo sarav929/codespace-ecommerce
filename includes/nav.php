@@ -1,6 +1,6 @@
 <?php
 
-    if (!isset($_SESSION[ 'user_id' ])) {
+    if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
         
@@ -20,12 +20,8 @@
                 <a href="session_cart.php" class="dropdown-item" type="button">Shop</a>
             </div>
             </div>
-            <a class="navbar-brand mr-5" href="../public/index.php">Nocturne Scents</a>
+            <a class="navbar-brand mr-5 logo" href="../public/index.php">Nocturne Scents</a>
 
-            <form class='form-inline' action="../public/session_cart.php" method="post">
-                <input class='form-control mr-sm-2' type='search' placeholder='Search' aria-label='Search'>
-                <button class='btn btn-light my-2 my-sm-0' type='submit'>Search</button>
-            </form>
         </div>
 
         <div class="nav-right">
