@@ -63,7 +63,7 @@
         $r = mysqli_query($link, $q);
 
         # Display body section with a form and a table.
-        echo '<div class="container mt-5">
+        echo '<div class="container mt-5 text-center">
         <form action="cart.php" method="post">';
 
         while ($row = mysqli_fetch_array ($r, MYSQLI_ASSOC)) {

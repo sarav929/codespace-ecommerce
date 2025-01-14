@@ -6,7 +6,7 @@
         
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark pr-5 pl-5">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid d-flex justify-content-between align-items-center">
 
         <!-- logo -->
